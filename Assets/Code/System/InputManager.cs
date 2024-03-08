@@ -46,14 +46,11 @@ namespace Code.System
         public Vector3 TouchPosition()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
-            float distance;
+            RaycastHit hit;
 
-            if (plane.Raycast(ray, out distance))
+            if (Physics.Raycast(ray, out hit))
             {
-                Vector3 worldPoint = ray.origin + ray.direction * distance;
-
-                return worldPoint;
+                return hit.point;
             }
             else
             {

@@ -7,8 +7,6 @@ namespace Code.Player
     public class PlayerAnimationController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-
-        public GameObject a;
         
         private const string MovementState = "IsMoving";
 
@@ -20,11 +18,6 @@ namespace Code.Player
         private void Update()
         {
             SetMovementAnimation();
-
-            if (Input.GetMouseButtonDown(0))
-            {
-               a.transform.position = InputManager.Instance.TouchPosition();
-            }
         }
 
         private void SetMovementAnimation()
