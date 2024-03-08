@@ -43,6 +43,24 @@ namespace Code.System
                 _isInput = false;
         }
 
+        public Vector3 TouchPosition()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, new Vector3(0, 0, 0));
+            float distance;
+
+            if (plane.Raycast(ray, out distance))
+            {
+                Vector3 worldPoint = ray.origin + ray.direction * distance;
+
+                return worldPoint;
+            }
+            else
+            {
+                return Vector3.zero;
+            }
+        }
+
         private void SetSingleton()
         {
             if (Instance == null)
